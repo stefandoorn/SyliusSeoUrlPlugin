@@ -1,5 +1,9 @@
 # Sylius SEO URL Plugin
 
+[![License](https://img.shields.io/packagist/l/stefandoorn/sylius-seo-url-plugin.svg)](https://packagist.org/packages/stefandoorn/sylius-seo-url-plugin)
+[![Version](https://img.shields.io/packagist/v/stefandoorn/sylius-seo-url-plugin.svg)](https://packagist.org/packages/stefandoorn/sylius-seo-url-plugin)
+[![Build status on Linux](https://img.shields.io/travis/stefandoorn/sylius-seo-url-plugin/master.svg)](http://travis-ci.org/stefandoorn/sylius-seo-url-plugin)
+
 ## Installation
 
 1. Require plugin with composer:
