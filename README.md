@@ -4,12 +4,26 @@
 [![Version](https://img.shields.io/packagist/v/stefandoorn/sylius-seo-url-plugin.svg)](https://packagist.org/packages/stefandoorn/sylius-seo-url-plugin)
 [![Build status on Linux](https://img.shields.io/travis/stefandoorn/sylius-seo-url-plugin/master.svg)](http://travis-ci.org/stefandoorn/sylius-seo-url-plugin)
 
+## Features
+
+* Remove `/taxons` from taxon URLs
+
+   1. Before: `https://localhost/en_US/taxons/t-shirts`
+   2. After: `https://localhost/en_US/t-shirts`
+
+* Remove `/products` from product URLs
+   
+   1. Before: `https://localhost/en_US/products/t-shirt-banana`
+   2. After: `https://localhost/en_US/t-shirt-banana`
+
+Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookbook/shop/disabling-localised-urls.html), URLs can even be shorter.
+
 ## Installation
 
 1. Require plugin with composer:
 
     ```bash
-    composer require sylius/rbac-plugin
+    composer require stefandoorn/sylius-seo-url-plugin
     ```
 
 2. Add plugin class to your `AppKernel`.
