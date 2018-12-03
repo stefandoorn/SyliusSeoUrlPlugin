@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="sylius.behat.page.shop.product.index.class">Tests\StefanDoorn\SyliusSeoUrlPlugin\Behat\Page\Shop\Product\IndexPage</parameter>
+        <parameter key="sylius.behat.page.shop.product.show.class">Tests\StefanDoorn\SyliusSeoUrlPlugin\Behat\Page\Shop\Product\ShowPage</parameter>
+    </parameters>
+
+    <services>
+        <service id="stefandoorn.seo_url_plugin.behat.context.shop.product" class="Tests\StefanDoorn\SyliusSeoUrlPlugin\Behat\Context\Ui\Shop\ProductContext">
+            <argument type="service" id="sylius.behat.page.shop.product.index" />
+            <argument type="service" id="sylius.behat.page.shop.product.show" />
+
+            <tag name="fob.context_service" />
+        </service>
+    </services>
+</container>

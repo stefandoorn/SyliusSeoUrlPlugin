@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- PRODUCT URLS -->
+        <service id="stefandoorn.seo_url_plugin.routing.checker.product_slug_condition_checker" class="StefanDoorn\SyliusSeoUrlPlugin\Routing\ProductSlugConditionChecker">
+            <argument type="service" id="service_container" />
+        </service>
+
+        <!-- TAXON URLS -->
+        <service id="stefandoorn.seo_url_plugin.routing.checker.taxon_slug_condition_checker" class="StefanDoorn\SyliusSeoUrlPlugin\Routing\TaxonSlugConditionChecker">
+            <argument type="service" id="service_container" />
+        </service>
+
+        <!-- Request Context override -->
+        <service id="router.request_context" class="StefanDoorn\SyliusSeoUrlPlugin\Routing\RequestContext">
+            <argument type="service" id="stefandoorn.seo_url_plugin.routing.checker.product_slug_condition_checker" />
+            <argument type="service" id="stefandoorn.seo_url_plugin.routing.checker.taxon_slug_condition_checker" />
+            <argument type="expression">service('sylius.context.locale').getLocaleCode()</argument>
+            <argument>%router.request_context.base_url%</argument>
+            <argument>GET</argument>
+            <argument>%router.request_context.host%</argument>
+            <argument>%router.request_context.scheme%</argument>
+            <argument>%request_listener.http_port%</argument>
+            <argument>%request_listener.https_port%</argument>
+        </service>
+    </services>
+</container>
