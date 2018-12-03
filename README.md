@@ -41,13 +41,15 @@
    The default `findOneByChannelAndSlug` for products is slow when used in a loop, therefore:
 
    1. Use the trait in your own Product Repository & add interface:
-   
-        ```php
-        use \StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductExistsByChannelAndSlug
-        ```
         
         ```php
-        final class ProductRepository implements \StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductExistsByChannelAndSlugAwareInterface
+        use StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductExistsByChannelAndSlug;
+        use StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductExistsByChannelAndSlugAwareInterface;
+  
+        final class ProductRepository implements ProductExistsByChannelAndSlugAwareInterface
+        {
+            use ProductExistsByChannelAndSlug;
+        }
         ```
         
    2. Or use the Product repository as provided, add to your config:
