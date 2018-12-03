@@ -1,28 +1,5 @@
 sylius_shop_product_index:
-    path: /{slug}
-    methods: [GET]
-    defaults:
-        _controller: sylius.controller.product:indexAction
-        _sylius:
-            template: "@SyliusShop/Product/index.html.twig"
-            grid: sylius_shop_product
-    requirements:
-        slug: .+
-    condition: "context.checkTaxonSlug(request.getPathInfo())"
+    resource: "routing/shop_product_index.yml"
 
 sylius_shop_product_show:
-    path: /{slug}
-    methods: [GET]
-    defaults:
-        _controller: sylius.controller.product:showAction
-        _sylius:
-            template: "@SyliusShop/Product/show.html.twig"
-            repository:
-                method: findOneByChannelAndSlug
-                arguments:
-                - "expr:service('sylius.context.channel').getChannel()"
-                - "expr:service('sylius.context.locale').getLocaleCode()"
-                - $slug
-    requirements:
-        slug: .+
-    condition: "context.checkProductSlug(request.getPathInfo())"
+    resource: "routing/shop_product_show.yml"

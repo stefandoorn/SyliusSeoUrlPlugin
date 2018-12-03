@@ -1,0 +1,16 @@
+sylius_shop_product_show:
+  path: /{slug}
+  methods: [GET]
+  defaults:
+    _controller: sylius.controller.product:showAction
+    _sylius:
+      template: "@SyliusShop/Product/show.html.twig"
+      repository:
+        method: findOneByChannelAndSlug
+        arguments:
+        - "expr:service('sylius.context.channel').getChannel()"
+        - "expr:service('sylius.context.locale').getLocaleCode()"
+        - $slug
+  requirements:
+    slug: .+
+  condition: "context.checkProductSlug(request.getPathInfo())"
