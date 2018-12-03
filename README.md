@@ -23,15 +23,40 @@
         resource: "@SyliusSeoUrlPlugin/Resources/config/shop_routing.yml"
     ```
 
-Make sure it's imported after:
-
-```yaml
-sylius_shop:
-    resource: "@SyliusShopBundle/Resources/config/routing.yml"
-```
+    Make sure it's imported after:
+    
+    ```yaml
+    sylius_shop:
+        resource: "@SyliusShopBundle/Resources/config/routing.yml"
+    ```
 
 4. Import configuration:
 
     ```yaml
     - { resource: "@SyliusSeoUrlPlugin/Resources/config/config.yml" }
     ```
+    
+5. Import repository method:
+
+   The default `findOneByChannelAndSlug` for products is slow when used in a loop, therefore:
+
+   1. Use the trait in your own Product Repository & add interface:
+   
+        ```php
+        use \StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductExistsByChannelAndSlug
+        ```
+        
+        ```php
+        final class ProductRepository implements \StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductExistsByChannelAndSlugAwareInterface
+        ```
+        
+   2. Or use the Product repository as provided, add to your config:
+   
+        ```yaml
+        sylius_product:
+            resources:
+                product:
+                    classes:
+                        repository: StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductRepository
+        ``` 
+ 
