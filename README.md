@@ -41,7 +41,7 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
         resource: "@SyliusSeoUrlPlugin/Resources/config/shop_routing.yml"
     ```
 
-    Make sure it's imported after:
+    Make sure it's imported after (because it overrides default Sylius routes):
     
     ```yaml
     sylius_shop:
