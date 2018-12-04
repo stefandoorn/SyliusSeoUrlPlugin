@@ -4,6 +4,9 @@ dist: trusty
 
 sudo: false
 
+services:
+    - mysql
+
 php:
     - 7.2
 
