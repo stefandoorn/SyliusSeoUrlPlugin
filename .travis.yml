@@ -4,9 +4,6 @@ dist: trusty
 
 sudo: false
 
-services:
-    - mysql
-
 php:
     - 7.2
 
@@ -44,6 +41,7 @@ install:
     - (cd tests/Application && yarn install)
 
 before_script:
+    - mysql -u root -e 'CREATE DATABASE sylius_test;'
     - (cd tests/Application && bin/console doctrine:database:create --env=test -vvv)
     - (cd tests/Application && bin/console doctrine:schema:create --env=test -vvv)
     - (cd tests/Application && bin/console assets:install public --env=test -vvv)
