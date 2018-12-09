@@ -56,14 +56,22 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
     sylius_shop:
         resource: "@SyliusShopBundle/Resources/config/routing.yml"
     ```
+    
+4. Import routing for admin routes:
 
-4. Import configuration:
+   ```yaml
+   sylius_seourl_admin:
+       resource: "@SyliusSeoUrlPlugin/Resources/config/admin_routing.yml"
+       prefix: /admin
+   ```
+
+5. Import configuration:
 
     ```yaml
     - { resource: "@SyliusSeoUrlPlugin/Resources/config/config.yml" }
     ```
     
-5. Import repository method:
+6. Import repository method:
 
    The default `findOneByChannelAndSlug` for products is slow when used in a loop, therefore:
 
