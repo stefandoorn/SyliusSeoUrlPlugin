@@ -1,4 +1,4 @@
-@managing_products
+@sylius_product_seo_url_admin
 Feature: Editing product's slug in multiple locales
     In order to manage access path to product page in many languages
     As an Administrator
