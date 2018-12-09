@@ -38,11 +38,5 @@
 
             <tag name="controller.service_arguments" />
         </service>
-
-        <service id="stefandoorn.seo_url_plugin.block_event_listener.admin.layout.javacripts" class="Sylius\Bundle\UiBundle\Block\BlockEventListener">
-            <argument>@SyliusSeoUrlPlugin/slug_admin_js.html.twig</argument>
-
-            <tag name="kernel.event_listener" event="sonata.block.event.sylius.admin.layout.javascripts" method="onBlockEvent" />
-        </service>
     </services>
 </container>
