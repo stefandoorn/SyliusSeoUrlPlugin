@@ -43,8 +43,8 @@ Feature: Editing product's slug
     Scenario: Automatically changing a product's slug while editing a product's name
         Given the store has a product "Mansion of Madness"
         When I want to modify this product
-        And I choose main taxon "Mugs"
         And I enable slug modification
+        And I choose main taxon "Mugs"
         And I rename it to "Small World" in "English (United States)"
         And I wait 5 seconds
         And I save my changes
@@ -54,8 +54,8 @@ Feature: Editing product's slug
     Scenario: Automatically changing a product's slug while editing a product's name (and not waiting for AJAX to complete)
         Given the store has a product "Mansion of Madness"
         When I want to modify this product
-        And I choose main taxon "Mugs"
         And I enable slug modification
+        And I choose main taxon "Mugs"
         And I rename it to "Small World" in "English (United States)"
         And I save my changes
         Then the slug of the "Small World" product should be "small-world"

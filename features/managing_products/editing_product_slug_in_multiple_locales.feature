@@ -41,8 +41,8 @@ Feature: Editing product's slug in multiple locales
     Scenario: Enabling automatic slugs update on product's names change
         Given the store has a product named "Pug Pugginton Plushie" in "English (United States)" locale and "Pluszak Mops Mopsiński" in "Polish (Poland)" locale
         When I want to modify this product
-        And I choose main taxon "Mugs"
         And I enable slug modification in "English (United States)"
+        And I choose main taxon "Mugs"
         And I rename it to "Pug Pugston the Third Plushie" in "English (United States)"
         And I enable slug modification in "Polish (Poland)"
         And I rename it to "Pluszak Mops Mopsak Trzeci" in "Polish (Poland)"
@@ -54,8 +54,8 @@ Feature: Editing product's slug in multiple locales
     Scenario: Manually modifying slugs on product's names change
         Given the store has a product named "Pug Pugginton Plushie" in "English (United States)" locale and "Pluszak Mops Mopsiński" in "Polish (Poland)" locale
         When I want to modify this product
-        And I choose main taxon "Mugs"
         And I enable slug modification in "English (United States)"
+        And I choose main taxon "Mugs"
         And I rename it to "Pug Pugston the Third Plushie" in "English (United States)"
         And I set its slug to "blabla/sir-pugston-the-third" in "English (United States)"
         And I enable slug modification in "Polish (Poland)"
