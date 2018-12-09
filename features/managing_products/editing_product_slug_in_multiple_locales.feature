@@ -9,7 +9,7 @@ Feature: Editing product's slug in multiple locales
         And the store is available in "English (United States)"
         And the store is also available in "Polish (Poland)"
         And I am logged in as an administrator
-        And the store has "Mugs" taxonomy
+        And the store has taxonomy named "Mugs" in "English (United States)" locale and "Kubki" in "Polish (Poland)" locale
 
     @ui
     Scenario: Creating a product with custom slugs but without a main taxon
@@ -35,7 +35,7 @@ Feature: Editing product's slug in multiple locales
         And I choose main taxon "Mugs"
         And I add it
         Then the slug of the "Pug Pugginton Plushie" product should be "mugs/pug-pugginton-plushie" in the "English (United States)" locale
-        And the slug of the "Pug Pugginton Plushie" product should be "mugs/pluszak-mops-mopsinski" in the "Polish (Poland)" locale
+        And the slug of the "Pug Pugginton Plushie" product should be "kubki/pluszak-mops-mopsinski" in the "Polish (Poland)" locale
 
     @ui @javascript
     Scenario: Enabling automatic slugs update on product's names change
@@ -48,7 +48,7 @@ Feature: Editing product's slug in multiple locales
         And I rename it to "Pluszak Mops Mopsak Trzeci" in "Polish (Poland)"
         And I save my changes
         Then this product should have slug "mugs/pug-pugston-the-third-plushie" in "English (United States)"
-        And this product should have slug "mugs/pluszak-mops-mopsak-trzeci" in "Polish (Poland)"
+        And this product should have slug "kubki/pluszak-mops-mopsak-trzeci" in "Polish (Poland)"
 
     @ui @javascript
     Scenario: Manually modifying slugs on product's names change
