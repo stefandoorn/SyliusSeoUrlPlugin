@@ -33,5 +33,6 @@ default:
                 - sylius.behat.context.ui.shop.product
 
                 - stefandoorn.seo_url_plugin.behat.context.shop.product
+                - stefandoorn.seo_url_plugin.behat.context.ui.sleep
             filters:
                 tags: "@sylius_product_seo_url && @ui"
