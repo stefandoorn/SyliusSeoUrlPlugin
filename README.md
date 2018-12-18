@@ -33,6 +33,15 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
        new \StefanDoorn\SyliusSeoUrlPlugin\SyliusSeoUrlPlugin(),
     ];
     ```
+    
+    or to your `bundles.php`:
+    
+    ```php
+    return [
+       // ...
+       StefanDoorn\SyliusSeoUrlPlugin\SyliusSeoUrlPlugin::class => ['all' => true],
+    ];
+    ```
 
 3. Import routing (to override default shop routing):
 
@@ -63,8 +72,9 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
         ```php
         use StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductExistsByChannelAndSlug;
         use StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductExistsByChannelAndSlugAwareInterface;
+        use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductRepository;
   
-        final class ProductRepository implements ProductExistsByChannelAndSlugAwareInterface
+        final class ProductRepository extends BaseProductRepository implements ProductExistsByChannelAndSlugAwareInterface
         {
             use ProductExistsByChannelAndSlug;
         }
@@ -79,4 +89,3 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
                     classes:
                         repository: StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductRepository
         ``` 
- 
