@@ -4,22 +4,27 @@ declare(strict_types=1);
 
 namespace StefanDoorn\SyliusSeoUrlPlugin\Routing;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 final class TaxonSlugConditionChecker
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
+    /** @var TaxonRepositoryInterface */
+    private $taxonRepository;
 
-    public function __construct(ContainerInterface $container)
-    {
-        $this->container = $container;
+    /** @var LocaleContextInterface */
+    private $localeContext;
+
+    public function __construct(
+        TaxonRepositoryInterface $taxonRepository,
+        LocaleContextInterface $localeContext
+    ) {
+        $this->taxonRepository = $taxonRepository;
+        $this->localeContext = $localeContext;
     }
 
     public function isTaxonSlug(string $slug): bool
     {
-        return null !== $this->container->get('sylius.repository.taxon')->findOneBySlug($slug, $this->container->get('sylius.context.locale')->getLocaleCode());
+        return null !== $this->taxonRepository->findOneBySlug($slug, $this->localeContext->getLocaleCode());
     }
 }

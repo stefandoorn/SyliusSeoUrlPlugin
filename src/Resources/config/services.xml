@@ -3,12 +3,15 @@
     <services>
         <!-- PRODUCT URLS -->
         <service id="stefandoorn.seo_url_plugin.routing.checker.product_slug_condition_checker" class="StefanDoorn\SyliusSeoUrlPlugin\Routing\ProductSlugConditionChecker">
-            <argument type="service" id="service_container" />
+            <argument type="service" id="sylius.repository.product" />
+            <argument type="service" id="sylius.context.channel" />
+            <argument type="service" id="sylius.context.locale" />
         </service>
 
         <!-- TAXON URLS -->
         <service id="stefandoorn.seo_url_plugin.routing.checker.taxon_slug_condition_checker" class="StefanDoorn\SyliusSeoUrlPlugin\Routing\TaxonSlugConditionChecker">
-            <argument type="service" id="service_container" />
+            <argument type="service" id="sylius.repository.taxon" />
+            <argument type="service" id="sylius.context.locale" />
         </service>
 
         <!-- Request Context override -->
