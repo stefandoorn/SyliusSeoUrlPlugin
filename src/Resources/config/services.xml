@@ -15,7 +15,7 @@
         <service id="router.request_context" class="StefanDoorn\SyliusSeoUrlPlugin\Routing\RequestContext">
             <argument type="service" id="stefandoorn.seo_url_plugin.routing.checker.product_slug_condition_checker" />
             <argument type="service" id="stefandoorn.seo_url_plugin.routing.checker.taxon_slug_condition_checker" />
-            <argument type="expression">service('sylius.context.locale').getLocaleCode()</argument>
+            <argument type="service" id="sylius.context.locale" />
             <argument>%router.request_context.base_url%</argument>
             <argument>GET</argument>
             <argument>%router.request_context.host%</argument>
