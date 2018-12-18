@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace StefanDoorn\SyliusSeoUrlPlugin\Routing;
 
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Routing\RequestContext as BaseRequestContext;
 
 final class RequestContext extends BaseRequestContext
@@ -14,13 +15,13 @@ final class RequestContext extends BaseRequestContext
     /** @var TaxonSlugConditionChecker */
     private $taxonSlugConditionChecker;
 
-    /** @var string */
-    private $localeCode;
+    /** @var LocaleContextInterface */
+    private $localeContext;
 
     public function __construct(
         ProductSlugConditionChecker $productSlugConditionChecker,
         TaxonSlugConditionChecker $taxonSlugConditionChecker,
-        string $localeCode,
+        LocaleContextInterface $localeContext,
         string $baseUrl = '',
         string $method = 'GET',
         string $host = 'localhost',
@@ -32,7 +33,7 @@ final class RequestContext extends BaseRequestContext
     ) {
         $this->productSlugConditionChecker = $productSlugConditionChecker;
         $this->taxonSlugConditionChecker = $taxonSlugConditionChecker;
-        $this->localeCode = $localeCode;
+        $this->localeContext = $localeContext;
 
         parent::__construct($baseUrl, $method, $host, $scheme, $httpPort, $httpsPort, $path, $queryString);
     }
@@ -50,11 +51,12 @@ final class RequestContext extends BaseRequestContext
     private function prepareSlug(string $slug): string
     {
         $slug = ltrim($slug, '/');
+        $localeCode = $this->localeContext->getLocaleCode();
 
-        if (false === strpos($slug, $this->localeCode)) {
+        if (false === strpos($slug, $localeCode)) {
             return $slug;
         }
 
-        return str_replace(sprintf('%s/', $this->localeCode), '', $slug);
+        return str_replace(sprintf('%s/', $localeCode), '', $slug);
     }
 }
