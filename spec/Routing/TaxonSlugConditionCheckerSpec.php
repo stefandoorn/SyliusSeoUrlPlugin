@@ -1,28 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\StefanDoorn\SyliusSeoUrlPlugin\Routing;
 
 use PhpSpec\ObjectBehavior;
 use StefanDoorn\SyliusSeoUrlPlugin\Routing\TaxonSlugConditionChecker;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 final class TaxonSlugConditionCheckerSpec extends ObjectBehavior
 {
     function let(
-        ContainerInterface $container,
         TaxonRepositoryInterface $taxonRepository,
-        ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext
     ) {
-        $container->get('sylius.repository.taxon')->willReturn($taxonRepository);
-        $container->get('sylius.context.channel')->willReturn($channelContext);
-        $container->get('sylius.context.locale')->willReturn($localeContext);
-
-        $this->beConstructedWith($container);
+        $this->beConstructedWith($taxonRepository, $localeContext);
     }
 
     function it_is_initializable()
