@@ -50,5 +50,10 @@
             "StefanDoorn\\SyliusSeoUrlPlugin\\": "src/",
             "Tests\\StefanDoorn\\SyliusSeoUrlPlugin\\": "tests/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-beta"
+        }
     }
 }
