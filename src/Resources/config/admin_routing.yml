@@ -1,0 +1,5 @@
+sylius_seourl_plugin_admin_ajax_generate_product_slug:
+  path: /ajax/generate-product-slug/
+  methods: [GET]
+  defaults:
+    _controller: stefandoorn.seo_url_plugin.controller.product_slug

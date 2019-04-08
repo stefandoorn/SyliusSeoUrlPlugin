@@ -26,5 +26,17 @@
             <argument>%request_listener.http_port%</argument>
             <argument>%request_listener.https_port%</argument>
         </service>
+
+        <!-- Product slug generator -->
+        <service id="stefandoorn.seo_url_plugin.generator.product_slug" class="StefanDoorn\SyliusSeoUrlPlugin\Generator\ProductSlugGenerator">
+            <argument type="service" id="sylius.repository.taxon" />
+            <argument type="service" id="sylius.generator.slug" />
+        </service>
+
+        <service id="stefandoorn.seo_url_plugin.controller.product_slug" class="StefanDoorn\SyliusSeoUrlPlugin\Controller\ProductSlugController">
+            <argument type="service" id="stefandoorn.seo_url_plugin.generator.product_slug" />
+
+            <tag name="controller.service_arguments" />
+        </service>
     </services>
 </container>

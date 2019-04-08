@@ -48,6 +48,9 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
     ```yaml
     sylius_seo_url_shop:
         resource: "@SyliusSeoUrlPlugin/Resources/config/shop_routing.yml"
+        prefix: /{_locale}
+        requirements:
+            _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
     ```
 
     Make sure it's imported after (because it overrides default Sylius routes):
@@ -56,14 +59,22 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
     sylius_shop:
         resource: "@SyliusShopBundle/Resources/config/routing.yml"
     ```
+    
+4. Import routing for admin routes:
 
-4. Import configuration:
+   ```yaml
+   sylius_seo_url_admin:
+       resource: "@SyliusSeoUrlPlugin/Resources/config/admin_routing.yml"
+       prefix: /admin
+   ```
+
+5. Import configuration:
 
     ```yaml
     - { resource: "@SyliusSeoUrlPlugin/Resources/config/config.yml" }
     ```
     
-5. Import repository method:
+6. Import repository method:
 
    The default `findOneByChannelAndSlug` for products is slow when used in a loop, therefore:
 
@@ -89,3 +100,24 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
                     classes:
                         repository: StefanDoorn\SyliusSeoUrlPlugin\Repository\ProductRepository
         ``` 
+ 
+7. Copy `_slugField.html.twig` from `src/Resources/views/SyliusAdminBundle/Product/_slugField.html.twig` to `templates/bundles/SyliusAdminBundle/Product/_slugField.html.twig` 
+    
+8. Adjust product slug routing:
+
+    Everywhere you are using the product slug in the URL, the 
+    requirement needs to be adjusted to match the / in the URI:
+    
+    ```yaml
+    requirements:
+      slug: .+
+    ```
+    
+## Overriden Sylius routes
+
+The following routes will be overriden by default to add the requirement
+as mentioned in step 8 of installation:
+
+* `sylius_shop_product_show`
+* `sylius_shop_product_review_index`
+* `sylius_shop_product_review_create`

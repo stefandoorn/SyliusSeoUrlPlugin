@@ -1,5 +1,9 @@
-stefandoorn_sylius_seo_url_plugin:
+sylius_seo_url_plugin:
     resource: "@SyliusSeoUrlPlugin/Resources/config/shop_routing.yml"
     prefix: /{_locale}
     requirements:
         _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
+
+sylius_seo_url_admin:
+    resource: "@SyliusSeoUrlPlugin/Resources/config/admin_routing.yml"
+    prefix: /admin

@@ -12,5 +12,9 @@
 
             <tag name="fob.context_service" />
         </service>
+
+        <service id="stefandoorn.seo_url_plugin.behat.context.ui.sleep" class="Tests\StefanDoorn\SyliusSeoUrlPlugin\Behat\Context\Ui\SleepContext">
+            <tag name="fob.context_service" />
+        </service>
     </services>
 </container>
