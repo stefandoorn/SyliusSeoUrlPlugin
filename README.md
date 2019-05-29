@@ -47,6 +47,7 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
 
     ```yaml
     sylius_seo_url_shop:
+        prefix: /{_locale}
         resource: "@SyliusSeoUrlPlugin/Resources/config/shop_routing.yml"
     ```
 
