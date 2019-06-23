@@ -47,6 +47,7 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
 
     ```yaml
     sylius_seo_url_shop:
+        prefix: /{_locale}
         resource: "@SyliusSeoUrlPlugin/Resources/config/shop_routing.yml"
     ```
 
@@ -55,7 +56,16 @@ Combined with [disabling localised URLs](https://docs.sylius.com/en/latest/cookb
     ```yaml
     sylius_shop:
         resource: "@SyliusShopBundle/Resources/config/routing.yml"
+        prefix: /{_locale}
     ```
+   
+   You can remove the prefix `/{_locale}` if you prefer url's without the prefix.
+   In this case, the import looks like this:
+   
+   ```yaml
+       sylius_seo_url_shop:
+           resource: "@SyliusSeoUrlPlugin/Resources/config/shop_routing.yml"
+   ```
 
 4. Import configuration:
 
