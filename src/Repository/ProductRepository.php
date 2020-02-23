@@ -6,7 +6,7 @@ namespace StefanDoorn\SyliusSeoUrlPlugin\Repository;
 
 use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductRepository;
 
-final class ProductRepository extends BaseProductRepository implements ProductExistsByChannelAndSlugAwareInterface
+class ProductRepository extends BaseProductRepository implements ProductExistsByChannelAndSlugAwareInterface
 {
     use ProductExistsByChannelAndSlug;
 }
