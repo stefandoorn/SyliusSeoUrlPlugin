@@ -5,7 +5,7 @@
     "description": "SEO URLs for Sylius",
     "license": "MIT",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2 || ^8.0",
 
         "sylius/sylius": "^1.3"
     },
