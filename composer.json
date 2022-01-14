@@ -1,5 +1,5 @@
 {
-    "name": "stefandoorn/sylius-seo-url-plugin",
+    "name": "eclyptox/sylius-seo-url-plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
     "description": "SEO URLs for Sylius",
